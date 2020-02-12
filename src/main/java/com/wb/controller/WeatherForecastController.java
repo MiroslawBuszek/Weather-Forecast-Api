@@ -3,6 +3,7 @@ package com.wb.controller;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import com.wb.payload.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wb.payload.ApiResponse;
 import com.wb.payload.Weather;
 import com.wb.service.WeatherService;
 import com.wb.utility.ApplicationConstants;
