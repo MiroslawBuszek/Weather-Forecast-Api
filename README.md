@@ -9,10 +9,10 @@ The project is about checking weather using opensource API
 ## Build with
 * [Spring Boot](https://spring.io/projects/spring-boot)
 * [Maven](https://maven.apache.org)
+* [Swagger](https://swagger.io/tools/swagger-ui/)
 
 ## Technologies
 * Java - version 8
-* Swagger UI - API Development Tools 
 
 ## Running the application locally
 There are several ways to run a application your local machine. One way is to run script `build.sh` directly.
