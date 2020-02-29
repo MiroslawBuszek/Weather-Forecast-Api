@@ -16,23 +16,23 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.wb.utility.ApplicationConstants;
 
-@SuppressWarnings({"unchecked","rawtypes"})
+@SuppressWarnings({"unchecked", "rawtypes"})
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
-	
-	@ExceptionHandler(IllegalArgumentException.class)
+
+    @ExceptionHandler(IllegalArgumentException.class)
     public final ResponseEntity<Object> handleIllegalArgumentException(Exception ex, WebRequest request) {
         List<String> errors = new ArrayList<String>();
         errors.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse(ApplicationConstants.PROPERTY_NOTFOUND_KEY, errors, HttpStatus.NOT_FOUND.value());
         return new ResponseEntity(error, HttpStatus.NOT_FOUND);
     }
-    
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<String> errors = new ArrayList();
-        for(ObjectError error : ex.getBindingResult().getAllErrors()) {
-        	errors.add(error.getDefaultMessage());
+        for (ObjectError error : ex.getBindingResult().getAllErrors()) {
+            errors.add(error.getDefaultMessage());
         }
         ErrorResponse error = new ErrorResponse(ApplicationConstants.VALIDATION_FAILED_KEY, errors, status.value());
         return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
