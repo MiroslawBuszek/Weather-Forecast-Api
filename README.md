@@ -1,5 +1,5 @@
 # Weather-Forecast-Api
-The project is about checking weather using opensource API
+The project is about checking weather using opensource API [Weather API - OpenWeatherMap](https://openweathermap.org/) 
 
 ## Table of contents
 * [Build with](#build-with)
