@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "temp", "pressure", "humidity", "temp_min", "temp_max" })
-public class Main {
+public class Property {
 
 	@JsonProperty("temp")
 	private Double temp;

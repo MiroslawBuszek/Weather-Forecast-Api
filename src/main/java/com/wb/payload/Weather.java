@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "coord", "weather", "base", "main", "visibility", "wind",
+@JsonPropertyOrder({ "coord", "weather", "base", "property", "visibility", "wind",
 		"clouds", "dt", "sys", "id", "name", "cod" })
 public class Weather {
 
@@ -21,8 +21,8 @@ public class Weather {
 	private List<Weather_> weather = null;
 	@JsonProperty("base")
 	private String base;
-	@JsonProperty("main")
-	private Main main;
+	@JsonProperty("property")
+	private Property property;
 	@JsonProperty("visibility")
 	private Integer visibility;
 	@JsonProperty("wind")
@@ -72,14 +72,14 @@ public class Weather {
 		this.base = base;
 	}
 
-	@JsonProperty("main")
-	public Main getMain() {
-		return main;
+	@JsonProperty("property")
+	public Property getProperty() {
+		return property;
 	}
 
-	@JsonProperty("main")
-	public void setMain(Main main) {
-		this.main = main;
+	@JsonProperty("property")
+	public void setProperty(Property property) {
+		this.property = property;
 	}
 
 	@JsonProperty("visibility")
@@ -175,7 +175,7 @@ public class Weather {
 	@Override
 	public String toString() {
 		return "Weather [coord=" + coord + ", weather=" + weather + ", base="
-				+ base + ", main=" + main + ", visibility=" + visibility
+				+ base + ", main=" + property + ", visibility=" + visibility
 				+ ", wind=" + wind + ", clouds=" + clouds + ", dt=" + dt
 				+ ", sys=" + sys + ", id=" + id + ", name=" + name + ", cod="
 				+ cod + ", additionalProperties=" + additionalProperties + "]";
