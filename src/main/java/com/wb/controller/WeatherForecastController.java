@@ -3,11 +3,7 @@ package com.wb.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.wb.payload.ApiResponse;
 import com.wb.payload.Weather;
@@ -23,13 +19,14 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "WB", value = "/wb")
 public class WeatherForecastController {
 
-    @Autowired WeatherService weatherService;
+    @Autowired
+    WeatherService weatherService;
 
     @ApiOperation(value = "Get Weather Data By City Country")
-    @RequestMapping(value = "/cityCountry/{cityCountry}", method = RequestMethod.GET)
+    @GetMapping(value = "/cityCountry/{cityCountry}")
     ResponseEntity<?> cityCountry(@PathVariable("cityCountry") String cityCountry) {
         Weather weather = weatherService.fetchWeather(cityCountry);
-        return ResponseEntity.ok(new ApiResponse(true, ApplicationConstants.GET_KEY,Translator.toLocale("wb.data.by.city.country"), HttpStatus.OK.value(), weather));
+        return ResponseEntity.ok(new ApiResponse(true, ApplicationConstants.GET_KEY, Translator.toLocale("wb.data.by.city.country"), HttpStatus.OK.value(), weather));
     }
 
     @ApiOperation(value = "Get Weather Data By City Country & time")

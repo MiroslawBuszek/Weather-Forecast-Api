@@ -22,7 +22,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public final ResponseEntity<Object> handleIllegalArgumentException(Exception ex, WebRequest request) {
-        List<String> errors = new ArrayList<String>();
+        List<String> errors = new ArrayList<>();
         errors.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse(ApplicationConstants.PROPERTY_NOTFOUND_KEY, errors, HttpStatus.NOT_FOUND.value());
         return new ResponseEntity(error, HttpStatus.NOT_FOUND);
@@ -30,7 +30,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        List<String> errors = new ArrayList();
+        List<String> errors = new ArrayList<>();
         for (ObjectError error : ex.getBindingResult().getAllErrors()) {
             errors.add(error.getDefaultMessage());
         }

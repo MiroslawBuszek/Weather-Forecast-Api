@@ -18,19 +18,16 @@ import javax.servlet.ServletContext;
 @EnableSwagger2
 public class Swagger2Config {
 
-	@Bean
-	public Docket authAPI(ServletContext servletContext) {
-		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).groupName(ApplicationConstants.GROUP_WB)
-				.select()
-				.apis(RequestHandlerSelectors.basePackage(ApplicationConstants.WB_API_BASEPACKAGR)).paths(PathSelectors.any())
-				.build();
-	}
-	
-	
-	private ApiInfo apiInfo() {
-		Contact contact = new Contact("Mirosław Buszek", "", "miroslawbuszek@gmail.com");
-		return new ApiInfoBuilder().title("Weather Forecast API").contact(contact).version("1.0").build();
-	}
+    @Bean
+    public Docket authAPI(ServletContext servletContext) {
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).groupName(ApplicationConstants.GROUP_WB)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage(ApplicationConstants.WB_API_BASEPACKAGR)).paths(PathSelectors.any())
+                .build();
+    }
 
-
+    private ApiInfo apiInfo() {
+        Contact contact = new Contact("Mirosław Buszek", "", "miroslawbuszek@gmail.com");
+        return new ApiInfoBuilder().title("Weather Forecast API").contact(contact).version("1.0").build();
+    }
 }
