@@ -1,4 +1,4 @@
-package com.wb.test;
+package com.wb;
 
 import static org.springframework.test.web.servlet.ResultMatcher.matchAll;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
