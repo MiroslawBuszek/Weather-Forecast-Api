@@ -1,6 +1,5 @@
 package com.wb.config;
 
-import com.wb.utility.ApplicationConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -20,9 +19,9 @@ public class Swagger2Config {
 
     @Bean
     public Docket authAPI(ServletContext servletContext) {
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).groupName(ApplicationConstants.GROUP_WB)
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).groupName("WEATHER")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(ApplicationConstants.WB_API_BASEPACKAGR)).paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.wb.controller")).paths(PathSelectors.any())
                 .build();
     }
 

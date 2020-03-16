@@ -1,10 +1,10 @@
 package com.wb.config;
 
-import com.wb.utility.ApplicationConstants;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -16,6 +16,6 @@ public class LocaleResolver extends AcceptHeaderLocaleResolver {
             return Locale.getDefault();
         }
         List<Locale.LanguageRange> list = Locale.LanguageRange.parse(request.getHeader("Accept-Language"));
-        return Locale.lookup(list, ApplicationConstants.LOCALES);
+        return Locale.lookup(list, Arrays.asList(new Locale("en")));
     }
 }

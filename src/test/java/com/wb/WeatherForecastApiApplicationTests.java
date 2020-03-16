@@ -12,8 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.wb.utility.ApplicationConstants;
-
 @SpringBootTest
 @AutoConfigureMockMvc
 public class WeatherForecastApiApplicationTests {
@@ -22,16 +20,16 @@ public class WeatherForecastApiApplicationTests {
     private MockMvc mockMvc;
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/findByCityCountry.csv", delimiter = ';')
-    public void findByCityCountry(String cityCountry) throws Exception {
-        mockMvc.perform(get(ApplicationConstants.WB_API_PRIFIX + "/wb/cityCountry/{cityCountry}", new Object[]{cityCountry}).contentType(MediaType.APPLICATION_JSON))
+    @CsvFileSource(resources = "/weatherForCity.csv", delimiter = ';')
+    public void testWeatherForCity(String city) throws Exception {
+        mockMvc.perform(get("/api/v1/wb/city/{city}", new Object[]{city}).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(matchAll(status().isOk()));
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/findByCityCountryAndTime.csv", delimiter = ';')
-    public void findByCityCountryAndTime(String cityCountry, long startTimeStamp, long endTimeStamp) throws Exception {
-        mockMvc.perform(get(ApplicationConstants.WB_API_PRIFIX + "/wb/cityCountryAndTime?cityCountry={cityCountry}&startTimeStamp={startTimeStamp}&endTimeStamp={endTimeStamp}", new Object[]{cityCountry, startTimeStamp, endTimeStamp})
+    @CsvFileSource(resources = "/weatherForCityAndTime.csv", delimiter = ';')
+    public void testWeatherForCityAndTime(String city, long startTimeStamp, long endTimeStamp) throws Exception {
+        mockMvc.perform(get("/api/v1/wb/cityAndTime?city={city}&startTimeStamp={startTimeStamp}&endTimeStamp={endTimeStamp}", new Object[]{city, startTimeStamp, endTimeStamp})
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(matchAll(status().isOk()));
     }
