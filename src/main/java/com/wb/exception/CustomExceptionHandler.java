@@ -16,7 +16,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ErrorResponse handleIllegalArgumentException(Exception ex, WebRequest request) {
-        List<String> errors = new ArrayList<String>();
+        List<String> errors = new ArrayList<>();
         errors.add(ex.getLocalizedMessage());
         return new ErrorResponse("PropertyNotFoundKey", errors, HttpStatus.NOT_FOUND.value());
     }
