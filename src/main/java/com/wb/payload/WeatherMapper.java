@@ -23,7 +23,7 @@ public class WeatherMapper {
     @JsonProperty("base")
     private String base;
     @JsonProperty("main")
-    private Property main;
+    private GroupWeather groupWeather;
     @JsonProperty("visibility")
     private Integer visibility;
     @JsonProperty("wind")
@@ -74,13 +74,13 @@ public class WeatherMapper {
     }
 
     @JsonProperty("main")
-    public Property getMain() {
-        return main;
+    public GroupWeather getGroupWeather() {
+        return groupWeather;
     }
 
     @JsonProperty("main")
-    public void setMain(Property main) {
-        this.main = main;
+    public void setGroupWeather(GroupWeather groupWeather) {
+        this.groupWeather = groupWeather;
     }
 
     @JsonProperty("visibility")
@@ -171,14 +171,5 @@ public class WeatherMapper {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public String toString() {
-        return "Weather [coord=" + coord + ", weather=" + weather + ", base="
-                + base + ", main=" + main + ", visibility=" + visibility
-                + ", wind=" + wind + ", clouds=" + clouds + ", dt=" + dt
-                + ", sys=" + sys + ", id=" + id + ", name=" + name + ", cod="
-                + cod + ", additionalProperties=" + additionalProperties + "]";
     }
 }
