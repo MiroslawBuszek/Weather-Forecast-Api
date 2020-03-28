@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 public class Translator {
     private static ResourceBundleMessageSource messageSource;
 
-    @Autowired
     Translator(ResourceBundleMessageSource messageSource) {
         Translator.messageSource = messageSource;
     }
