@@ -24,14 +24,14 @@ public class WeatherForecastController {
 
     @ApiOperation(value = "Get Weather Data By City")
     @GetMapping(value = "/city/{city}")
-    ApiResponse weatherForCity(@PathVariable("city") String city) {
+    public ApiResponse weatherForCity(@PathVariable("city") String city) {
         WeatherMapper weather = weatherService.fetchWeatherByCity(city);
         return new ApiResponse("GetKey", Translator.toLocale("wb.data.by.city"), HttpStatus.OK.value(), weather);
     }
 
     @ApiOperation(value = "Get Weather Data By City & Time")
     @GetMapping(value = "/cityAndTime")
-    ApiResponse weatherForCityAndTime(@RequestParam String city, @RequestParam Long startTimeStamp, @RequestParam Long endTimeStamp) {
+    public ApiResponse weatherForCityAndTime(@RequestParam String city, @RequestParam Long startTimeStamp, @RequestParam Long endTimeStamp) {
         WeatherMapper weather = weatherService.fetchWeatherByCityAndTime(city, startTimeStamp, endTimeStamp);
         return new ApiResponse("GetKey", Translator.toLocale("wb.data.by.city.time"), HttpStatus.OK.value(), weather);
     }
