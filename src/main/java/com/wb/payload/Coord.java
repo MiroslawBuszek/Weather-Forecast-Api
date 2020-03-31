@@ -1,11 +1,5 @@
 package com.wb.payload;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -18,8 +12,6 @@ public class Coord {
     private Double lon;
     @JsonProperty("lat")
     private Double lat;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
 
     public Double getLon() {
         return lon;
@@ -36,15 +28,4 @@ public class Coord {
     public void setLat(Double lat) {
         this.lat = lat;
     }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }
