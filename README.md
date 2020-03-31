@@ -21,8 +21,8 @@ There are several ways to run a application your local machine. One way is to ru
 - Unzip the zip file
 - Run `build.sh` script to build and start project
 - Head out to http://localhost:8080/swagger-ui.html
-    - /api/v1/wb/cityCountry/{cityCountry}
-    - /api/v1/wb/cityCountryAndTime
+    - /api/v1/wb//city/{city}
+    - /api/v1/wb/cityAndTime
 
 Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
 
