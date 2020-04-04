@@ -2,7 +2,7 @@ package com.wb.exception;
 
 import java.net.ConnectException;
 import java.net.NoRouteToHostException;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -19,29 +19,25 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ErrorResponse handleIllegalArgumentException(Exception ex, WebRequest request) {
-        List<String> errors = new ArrayList<>();
-        errors.add(ex.getLocalizedMessage());
+        List<String> errors = Collections.singletonList(ex.getLocalizedMessage());
         return new ErrorResponse("PropertyNotFoundKey", errors, HttpStatus.NOT_FOUND.value());
     }
 
     @ExceptionHandler(HttpClientErrorException.class)
     public ErrorResponse handleHttpClientErrorException(Exception ex, WebRequest request) {
-        List<String> errors = new ArrayList<String>();
-        errors.add(ex.getLocalizedMessage());
+        List<String> errors = Collections.singletonList(ex.getLocalizedMessage());
         return new ErrorResponse("NotFound", errors, HttpStatus.NOT_FOUND.value());
     }
 
     @ExceptionHandler(ConnectException.class)
     public ErrorResponse handleConnectException(Exception ex, WebRequest request) {
-        List<String> errors = new ArrayList<String>();
-        errors.add(ex.getLocalizedMessage());
+        List<String> errors = Collections.singletonList(ex.getLocalizedMessage());
         return new ErrorResponse("TimeOut", errors, HttpStatus.REQUEST_TIMEOUT.value());
     }
 
     @ExceptionHandler(NoRouteToHostException.class)
     public ErrorResponse handleNoRouteToHostException(Exception ex, WebRequest request) {
-        List<String> errors = new ArrayList<String>();
-        errors.add(ex.getLocalizedMessage());
+        List<String> errors = Collections.singletonList(ex.getLocalizedMessage());
         return new ErrorResponse("NoRout", errors, HttpStatus.GATEWAY_TIMEOUT.value());
     }
 }
