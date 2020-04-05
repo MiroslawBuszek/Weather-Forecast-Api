@@ -3,7 +3,11 @@ package com.wb.payload;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"temp", "pressure", "humidity", "temp_min", "temp_max"})
 public class GroupWeather {
@@ -19,43 +23,4 @@ public class GroupWeather {
     @JsonProperty("temp_max")
     private Double tempMax;
 
-    public Double getTemp() {
-        return temp;
-    }
-
-    public void setTemp(Double temp) {
-        this.temp = temp;
-    }
-
-    public Integer getPressure() {
-        return pressure;
-    }
-
-    public void setPressure(Integer pressure) {
-        this.pressure = pressure;
-    }
-
-    public Integer getHumidity() {
-        return humidity;
-    }
-
-    public void setHumidity(Integer humidity) {
-        this.humidity = humidity;
-    }
-
-    public Double getTempMin() {
-        return tempMin;
-    }
-
-    public void setTempMin(Double tempMin) {
-        this.tempMin = tempMin;
-    }
-
-    public Double getTempMax() {
-        return tempMax;
-    }
-
-    public void setTempMax(Double tempMax) {
-        this.tempMax = tempMax;
-    }
 }

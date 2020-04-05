@@ -3,7 +3,11 @@ package com.wb.payload;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"lon", "lat"})
 public class Coord {
@@ -13,19 +17,4 @@ public class Coord {
     @JsonProperty("lat")
     private Double lat;
 
-    public Double getLon() {
-        return lon;
-    }
-
-    public void setLon(Double lon) {
-        this.lon = lon;
-    }
-
-    public Double getLat() {
-        return lat;
-    }
-
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
 }
