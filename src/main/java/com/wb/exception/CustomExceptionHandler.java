@@ -17,27 +17,27 @@ import com.wb.payload.ErrorResponse;
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
+    private List<String> errorListFormException(Exception ex) {
+        return Collections.singletonList(ex.getLocalizedMessage());
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ErrorResponse handleIllegalArgumentException(Exception ex, WebRequest request) {
-        List<String> errors = Collections.singletonList(ex.getLocalizedMessage());
-        return new ErrorResponse("PropertyNotFoundKey", errors, HttpStatus.NOT_FOUND.value());
+        return new ErrorResponse("PropertyNotFoundKey", errorListFormException(ex), HttpStatus.NOT_FOUND.value());
     }
 
     @ExceptionHandler(HttpClientErrorException.class)
     public ErrorResponse handleHttpClientErrorException(Exception ex, WebRequest request) {
-        List<String> errors = Collections.singletonList(ex.getLocalizedMessage());
-        return new ErrorResponse("NotFound", errors, HttpStatus.NOT_FOUND.value());
+        return new ErrorResponse("NotFound", errorListFormException(ex), HttpStatus.NOT_FOUND.value());
     }
 
     @ExceptionHandler(ConnectException.class)
     public ErrorResponse handleConnectException(Exception ex, WebRequest request) {
-        List<String> errors = Collections.singletonList(ex.getLocalizedMessage());
-        return new ErrorResponse("TimeOut", errors, HttpStatus.REQUEST_TIMEOUT.value());
+        return new ErrorResponse("TimeOut", errorListFormException(ex), HttpStatus.REQUEST_TIMEOUT.value());
     }
 
     @ExceptionHandler(NoRouteToHostException.class)
     public ErrorResponse handleNoRouteToHostException(Exception ex, WebRequest request) {
-        List<String> errors = Collections.singletonList(ex.getLocalizedMessage());
-        return new ErrorResponse("NoRout", errors, HttpStatus.GATEWAY_TIMEOUT.value());
+        return new ErrorResponse("NoRout", errorListFormException(ex), HttpStatus.GATEWAY_TIMEOUT.value());
     }
 }
