@@ -8,13 +8,11 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException.InternalServerError;
@@ -22,7 +20,6 @@ import org.springframework.web.client.HttpServerErrorException.InternalServerErr
 import com.wb.payload.WeatherMapper;
 import com.wb.service.WeatherService;
 
-@ExtendWith(SpringExtension.class)
 
 @RestClientTest(WeatherService.class)
 public class WeatherForecastApiApplicationUnitTests {
