@@ -3,7 +3,6 @@ package com.wb.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -12,7 +11,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.wb.payload.WeatherMapper;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.Future;
 
 @Service
 @Slf4j
